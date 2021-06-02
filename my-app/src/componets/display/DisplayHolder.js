@@ -1,20 +1,15 @@
-const DisplayHolder = () => {
+import Task from "./Task";
+
+const DisplayHolder = (props) => {
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var d = new Date();
+    var dayName = days[d.getDay()];
     return(
         <div className={"wrapper"} >
             <div className={"content"}>
-                CURRENT DAY
+                {dayName}
             </div>
-            <div className={"tasks_holder"}>
-                <div className={"task"}>
-                    <div className="title_wrapper">
-                        <div className="task_title">Task: Take dog out</div>
-                    </div>
-                    <div className={"input_wrapper"}>
-                        <div className="due_date">Due: jan-1-2021</div>
-                        <input className={"todo"} type="checkbox" id={"is_done"}/>
-                    </div>
-                </div>
-            </div>
+            <Task taskInfo={props.taskInfo}/>
         </div>
     );
 }
