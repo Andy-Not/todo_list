@@ -1,6 +1,9 @@
+import RemoveTask from "../UserInput/RemoveTask";
+
 const Task = (props) => {
+    let x = true;
     return(
-    <div className={"tasks_holder"}>
+    <div key={props.taskInfo.id} className={"tasks_holder"}>
         {props.taskInfo.map((task) => (
             <div className={"task"}>
                 <div className="title_wrapper">
@@ -8,7 +11,8 @@ const Task = (props) => {
                 </div>
                 <div className={"input_wrapper"}>
                     <div className="due_date">Due: {task.due}</div>
-                    <input className={"todo"} type="checkbox" id={"is_done"}/>
+                    {x&&<div className="due_time">{task.time}</div>}
+                    <RemoveTask currentTask={task.id}/>
                 </div>
             </div>
         ))}
