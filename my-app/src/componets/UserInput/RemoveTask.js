@@ -1,4 +1,5 @@
 const RemoveTask = (props) => {
+
     const taskInfoHandler = () => {
         console.log(props.currentTask)
     }

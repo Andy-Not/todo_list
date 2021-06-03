@@ -3,8 +3,18 @@ import React, {useState} from "react";
 const TaskInfo = () => {
 
    const [time,setTime] = useState();
-   const submitHandler = () => {
+   const [date, setDate] = useState();
+   const [title, setTitle] = useState("");
 
+   const submitHandler = (event) => {
+       event.preventDefault();
+         const newTask = {
+             title: title,
+             due: date,
+             time: time,
+             id: Math.random()
+         }
+         console.log(newTask)
    }
 
    const timeHandler = (event) => {
@@ -18,13 +28,23 @@ const TaskInfo = () => {
        }
 
    }
-   console.log(time);
+
+   const dateHandler = (event) => {
+       const xdate = new Date(event.target.value)
+        setDate(`${xdate.getMonth()+1}/${xdate.getDate()+1}/${xdate.getFullYear()}`)
+   }
+
+   const titleHandler = (event) => {
+        setTitle(event.target.value);
+   }
+
+   console.log(date);
     return(
         <form onSubmit={submitHandler}>
             <label htmlFor="task">Task</label>
-            <input id={"task"} type="text"/>
+            <input onChange={titleHandler} id={"task"} type="text" value={title}/>
             <label htmlFor="date"> date and time</label>
-            <input type="date"/>
+            <input onSelect={dateHandler} type="date"/>
             <input onSelect={timeHandler} type="time" name="time" placeholder="hrs:mins" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs time"/>
             <button type={"submit"}>Add task</button>
         </form>
