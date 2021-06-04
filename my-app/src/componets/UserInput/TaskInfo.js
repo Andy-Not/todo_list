@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const TaskInfo = () => {
+const TaskInfo = (props) => {
 
    const [time,setTime] = useState();
    const [date, setDate] = useState();
@@ -14,7 +14,8 @@ const TaskInfo = () => {
              time: time,
              id: Math.random()
          }
-         console.log(newTask)
+         props.addTask(newTask)
+         setTitle("")
    }
 
    const timeHandler = (event) => {
@@ -38,11 +39,12 @@ const TaskInfo = () => {
         setTitle(event.target.value);
    }
 
-   console.log(date);
     return(
         <form onSubmit={submitHandler}>
-            <label htmlFor="task">Task</label>
-            <input onChange={titleHandler} id={"task"} type="text" value={title}/>
+            <div className="form_task_title">
+                <label htmlFor="task">Task</label>
+                <input onChange={titleHandler} id={"task"} type="text" value={title}/>
+            </div>
             <label htmlFor="date"> date and time</label>
             <input onSelect={dateHandler} type="date"/>
             <input onSelect={timeHandler} type="time" name="time" placeholder="hrs:mins" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="inputs time"/>

@@ -1,7 +1,7 @@
 const RemoveTask = (props) => {
 
     const taskInfoHandler = () => {
-        console.log(props.currentTask)
+        props.remover(props.currentTask)
     }
     return(
         <div>
