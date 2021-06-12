@@ -30,7 +30,7 @@ const TaskInfo = (props) => {
          }
 
          props.addTask(newTask)
-       titleInputRef.current.value = ""
+         titleInputRef.current.value = ""
 
    }
 

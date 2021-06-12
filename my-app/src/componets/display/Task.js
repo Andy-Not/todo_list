@@ -7,8 +7,8 @@ const Task = (props) => {
     <div className={"tasks_holder"}>
         {props.taskInfo.map((task) => (
             <TaskSetup remover={props.remover} task={task}/>
-        ))}
-
+        ))
+        }
     </div>)
 }
 export default Task;
